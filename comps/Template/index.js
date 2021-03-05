@@ -6,6 +6,7 @@ const TemplateBox = styled.div`
 
 const Template = ({}) => {
     return  <TemplateBox>
+        Hello
  </TemplateBox>
  
 }
