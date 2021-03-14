@@ -11,25 +11,17 @@ import axios from "axios";
 
 let fakedb = [];
 
-const Account = () => {
+const Home = () => {
   return (
     <div className="Account">
-      <NavAccount />
+      <NavHome />
       <div className="contents">
-      <br></br>
-        <AccountImg />
-        <Input text="Username" placeholder="" />
-        <Input text="Email" placeholder="" />
-        <br></br>
-        <Hats text="Change Skill Level" />
-        <br></br><br></br><br></br>
-        <FormButtons text="Save Changes" /> 
+
+        
       </div>
-      <div className="logout">
-        <Logout />
-      </div>
+      
     </div>
   );
 };
 
-export default Account;
+export default Home;
