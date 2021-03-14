@@ -6,15 +6,15 @@ const FormBox = styled.div`
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+ 
 `;
-const TitleTextBox = styled.label`
-    color: #EF7E5B;
+const TitleTextBox = styled.h3`
+
 `;
 const InputBox = styled.input`
     border-radius: 8px;
     border: 1px solid #EF7E5B;
-    padding: 12px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     color: #434343;
