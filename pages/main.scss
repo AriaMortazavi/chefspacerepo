@@ -20,10 +20,23 @@ body {
 .contents{
     padding: 0px 20px;
 }
+
 .logout{
     position: absolute;
     bottom: 0px;
     width: 100%;
+}
+.LoginPage {
+    height: 812px;
+    width: 375px;
+    background: rgb(255, 255, 255);
+    position: relative;
+}
+.SignUpPage{
+    height: 812px;
+    width: 375px;
+    background: rgb(255, 255, 255);
+    position: relative;
 }
 
 h3 {

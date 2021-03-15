@@ -11,7 +11,9 @@ const MainPage = () => {
 
   return (
     <div className="main">
-      <Template></Template>
+      <Template>
+        
+      </Template>
     </div>
   );
 };
