@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import Input from '../Input';
 import FormButtons from '../FormButtons';
+import BeginerButton from '../BeginerButton';
 import axios from 'axios';
 
 import { useHistory } from 'react-router-dom';
 
-const LoginBox = styled.form`
+const SignUpBox = styled.form`
     max-width: 100%;
     max-height: 100%;
     margin: 0px;
@@ -16,25 +17,26 @@ const LoginBox = styled.form`
   justify-content: center;
 `;
 
-const Logo_icon = styled.img`
-    width: 60%;
-    display: flex;
-`;
-
 const Login_title = styled.h1`
     color: #EF7E5B;
     font-size: 36px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 `;
 
 const Login_new = styled.p`
     color: #EF7E5B;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
+    justify-content: left;
     text-align: left;
-    cursor: pointer;
 `;
+
+const LevelBtns = styled.div`
+    display: flex;
+    align-items: center;
+  justify-content: center;
+`
 
 const Container = styled.div`
   display: flex;
@@ -45,18 +47,23 @@ const Container = styled.div`
   border-radius: 20px 20px 0px 0px;
 `;
 
-const Login = ({}) => {
 
+const Signup = ({}) => {
+
+    const [usernameInfo, setUsernameInfo] = useState(null);
     const [emailInfo, setEmailInfo] = useState(null);
     const [passwordInfo, setPasswordInfo] = useState(null);
+    const [levelInfo, setLevelInfo] = useState(null);
 
     const history = useHistory();
 
-    const LogInHandler = async () => {
-      console.log(emailInfo);
-      console.log(passwordInfo);
+    const SignUpHandler = async () => {
+        console.log(usernameInfo);
+        console.log(passwordInfo);
+        console.log(emailInfo);
+        console.log(levelInfo);
       const res = await axios.post("Link goes here", {
-      email: emailInfo, password: passwordInfo
+      email: emailInfo, password: passwordInfo, username: usernameInfo, level: levelInfo
     });
     console.log(res);
     if (res.data !== "Incorrect credentials"){
@@ -73,19 +80,20 @@ const Login = ({}) => {
     
     }, []);
 
-    return  <LoginBox>
-        <Logo_icon src="/CSLogo.svg"></Logo_icon>
+    return  <SignUpBox>
         <Container>
-        <Login_title>Login</Login_title>
+        <Login_title>Sign Up</Login_title>
+        <Input onChange={(e) => setUsernameInfo(e.target.value)} placeholder={"Username"} text="Username" type="text" />
       <Input onChange={(e) => setEmailInfo(e.target.value)} placeholder={"Email"} text="Email" type="text" />
       <Input onChange={(e) => setPasswordInfo(e.target.value)} placeholder={"Password"} text="Password" type="Password" />
     </Container>
-    <Login_new><u>New here? Sign Up</u></Login_new>
-    <FormButtons onClick={LogInHandler} type="button" text={"Login"}></FormButtons>
- </LoginBox>
+    <Login_new>Choose your skill level</Login_new>
+   <LevelBtns> <BeginerButton onChange={(e) => setLevelInfo(e.target.value)} /></LevelBtns>
+    <FormButtons onClick={SignUpHandler} type="button" text={"Login"}></FormButtons>
+ </SignUpBox>
  
 }
-Login.defaultProps = {
+Signup.defaultProps = {
   }
 
-export default Login;
+export default Signup;
