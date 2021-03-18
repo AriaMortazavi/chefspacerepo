@@ -4,6 +4,7 @@ import Input from '../Input';
 import FormButtons from '../FormButtons';
 import BeginerButton from '../BeginerButton';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import { useHistory } from 'react-router-dom';
 
@@ -48,7 +49,9 @@ const Container = styled.div`
 `;
 
 
-const Signup = ({}) => {
+const Signup = ({post}) => {
+
+  const router = useRouter()
 
     const [usernameInfo, setUsernameInfo] = useState(null);
     const [emailInfo, setEmailInfo] = useState(null);
@@ -62,7 +65,7 @@ const Signup = ({}) => {
         console.log(passwordInfo);
         console.log(emailInfo);
         console.log(levelInfo);
-      const res = await axios.post("Link goes here", {
+      const res = await axios.post("https://chefspace-backend.herokuapp.com/createusers", {
       email: emailInfo, password: passwordInfo, username: usernameInfo, level: levelInfo
     });
     console.log(res);
@@ -70,7 +73,9 @@ const Signup = ({}) => {
       const token = res.data;
       sessionStorage.setItem("token", token);
       axios.defaults.headers.common['Authorization'] = token;
-      history.push("/main")
+      router.push({
+        pathname: '../LoginPage',
+      })
     }else{
       alert("Can't Log In")
     }
@@ -89,7 +94,8 @@ const Signup = ({}) => {
     </Container>
     <Login_new>Choose your skill level</Login_new>
    <LevelBtns> <BeginerButton onChange={(e) => setLevelInfo(e.target.value)} /></LevelBtns>
-    <FormButtons onClick={SignUpHandler} type="button" text={"Login"}></FormButtons>
+   
+    <FormButtons onClick={SignUpHandler} type="button" text={"Sign Up"}></FormButtons>
  </SignUpBox>
  
 }

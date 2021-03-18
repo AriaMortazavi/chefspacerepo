@@ -3,6 +3,7 @@ import styled, {css} from 'styled-components';
 import Input from '../Input';
 import FormButtons from '../FormButtons';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import { useHistory } from 'react-router-dom';
 
@@ -46,6 +47,7 @@ const Container = styled.div`
 `;
 
 const Login = ({}) => {
+  const router = useRouter()
 
     const [emailInfo, setEmailInfo] = useState(null);
     const [passwordInfo, setPasswordInfo] = useState(null);
@@ -55,12 +57,12 @@ const Login = ({}) => {
     const LogInHandler = async () => {
       console.log(emailInfo);
       console.log(passwordInfo);
-      const res = await axios.post("Link goes here", {
+      const res = await axios.post("https://chefspace-backend.herokuapp.com/createusers/login", {
       email: emailInfo, password: passwordInfo
     });
     console.log(res);
-    if (res.data !== "Incorrect credentials"){
-      const token = res.data;
+    if (res.database !== "Not allowed"){
+      const token = res.database;
       sessionStorage.setItem("token", token);
       axios.defaults.headers.common['Authorization'] = token;
       history.push("/main")
@@ -69,10 +71,6 @@ const Login = ({}) => {
     }
   }
 
-    useEffect(() => {
-    
-    }, []);
-
     return  <LoginBox>
         <Logo_icon src="/CSLogo.svg"></Logo_icon>
         <Container>
@@ -80,7 +78,9 @@ const Login = ({}) => {
       <Input onChange={(e) => setEmailInfo(e.target.value)} placeholder={"Email"} text="Email" type="text" />
       <Input onChange={(e) => setPasswordInfo(e.target.value)} placeholder={"Password"} text="Password" type="Password" />
     </Container>
-    <Login_new><u>New here? Sign Up</u></Login_new>
+    <Login_new  onClick={() => {router.push({
+        pathname: '../SignUpPage',
+      })}}><u>New here? Sign Up</u></Login_new>
     <FormButtons onClick={LogInHandler} type="button" text={"Login"}></FormButtons>
  </LoginBox>
  
