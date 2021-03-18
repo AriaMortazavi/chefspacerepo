@@ -95,7 +95,7 @@ const Signup = ({post}) => {
     <Login_new>Choose your skill level</Login_new>
    <LevelBtns> <BeginerButton onChange={(e) => setLevelInfo(e.target.value)} /></LevelBtns>
    
-    <FormButtons onClick={SignUpHandler} type="button" text={"Sign Up"}></FormButtons>
+    <FormButtons onClick={SignUpHandler} type="submit" text={"Sign Up"}></FormButtons>
  </SignUpBox>
  
 }
