@@ -55,17 +55,17 @@ const Login = ({}) => {
     const history = useHistory();
 
     const LogInHandler = async () => {
-      console.log(emailInfo);
-      console.log(passwordInfo);
-      const res = await axios.post("https://chefspace-backend.herokuapp.com/createusers/login", {
+      const res = await axios.post("https://chefspace-backend.herokuapp.com/login", {
       email: emailInfo, password: passwordInfo
     });
     console.log(res);
-    if (res.database !== "Not allowed"){
-      const token = res.database;
+    if (res.email !== "Cannot find user"){
+      const token = res.data.accesssToken;
       sessionStorage.setItem("token", token);
       axios.defaults.headers.common['Authorization'] = token;
-      history.push("/main")
+      {router.push({
+        pathname: '../Home',
+      })}
     }else{
       alert("Can't Log In")
     }
@@ -81,7 +81,7 @@ const Login = ({}) => {
     <Login_new  onClick={() => {router.push({
         pathname: '../SignUpPage',
       })}}><u>New here? Sign Up</u></Login_new>
-    <FormButtons onClick={LogInHandler} type="button" text={"Login"}></FormButtons>
+    <FormButtons onClick={LogInHandler} type="submit" text={"Login"}></FormButtons>
  </LoginBox>
  
 }
