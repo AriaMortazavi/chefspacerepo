@@ -65,7 +65,7 @@ const Signup = ({post}) => {
         console.log(passwordInfo);
         console.log(emailInfo);
         console.log(levelInfo);
-      const res = await axios.post("https://chefspace-backend.herokuapp.com/createusers", {
+      const res = await axios.post("http://localhost:8080//api/createusers", {
       email: emailInfo, password: passwordInfo, username: usernameInfo, level: levelInfo
     });
     console.log(res);
@@ -95,7 +95,7 @@ const Signup = ({post}) => {
     <Login_new>Choose your skill level</Login_new>
    <LevelBtns> <BeginerButton onChange={(e) => setLevelInfo(e.target.value)} /></LevelBtns>
    
-    <FormButtons onClick={SignUpHandler} type="submit" text={"Sign Up"}></FormButtons>
+    <FormButtons onClick={SignUpHandler} type="button" text={"Sign Up"}></FormButtons>
  </SignUpBox>
  
 }

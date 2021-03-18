@@ -55,7 +55,7 @@ const Login = ({}) => {
     const history = useHistory();
 
     const LogInHandler = async () => {
-      const res = await axios.post("https://chefspace-backend.herokuapp.com/login", {
+      const res = await axios.post("http://localhost:8080/login", {
       email: emailInfo, password: passwordInfo
     });
     console.log(res);
@@ -81,7 +81,7 @@ const Login = ({}) => {
     <Login_new  onClick={() => {router.push({
         pathname: '../SignUpPage',
       })}}><u>New here? Sign Up</u></Login_new>
-    <FormButtons onClick={LogInHandler} type="submit" text={"Login"}></FormButtons>
+    <FormButtons onClick={LogInHandler} type="button" text={"Login"}></FormButtons>
  </LoginBox>
  
 }
