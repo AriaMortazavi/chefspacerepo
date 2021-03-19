@@ -5,6 +5,7 @@ const PostContainer = styled.div`
     display: flex;
     align-items: stretch;
     width: 400px;
+    border: 2px solid;
 `;
 
 const ImgCont = styled.div`
