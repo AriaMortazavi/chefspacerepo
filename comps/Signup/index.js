@@ -49,7 +49,7 @@ const Container = styled.div`
 `;
 
 
-const Signup = ({post}) => {
+const Signup = ({}) => {
 
   const router = useRouter()
 

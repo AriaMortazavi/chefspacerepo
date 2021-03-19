@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SignUp from "../../comps/SignUp";
-import axios from "axios";
-
-let fakedb = [];
 
 const SignUpPage = () => {
   return (
