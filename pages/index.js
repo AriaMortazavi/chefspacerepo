@@ -12,11 +12,11 @@ const MainPage = () => {
 
   return (
     <div className="main">
-      <Template>
-      </Template>
+      {/* <Template>
+      </Template> */}
 
+    <Post> </Post>
     
-
     </div>
   );
 };
