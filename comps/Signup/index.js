@@ -6,8 +6,6 @@ import BeginerButton from '../BeginerButton';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import { useHistory } from 'react-router-dom';
-
 const SignUpBox = styled.form`
     max-width: 100%;
     max-height: 100%;
