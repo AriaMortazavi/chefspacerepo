@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Template from "../comps/Template"
+import Template from "../comps/Template";
+import Post from '../comps/Post';
 
 import axios from 'axios';
 
@@ -11,9 +12,12 @@ const MainPage = () => {
 
   return (
     <div className="main">
-      <Template>
-        
-      </Template>
+      {/* <Template>
+      </Template> */}
+
+    <Post>
+
+    </Post>
     </div>
   );
 };
