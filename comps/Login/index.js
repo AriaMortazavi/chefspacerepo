@@ -55,7 +55,7 @@ const Login = ({}) => {
     const history = useHistory();
 
     const LogInHandler = async () => {
-      const res = await axios.post("https://chefspace-backend.herokuapp.com/users/login", {
+      const res = await axios.post("https://chefspace-backend.herokuapp.com/api/users/login", {
       email: emailInfo, password: passwordInfo
     });
     console.log(res);
