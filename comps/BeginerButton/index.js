@@ -119,19 +119,19 @@ const BeginerButton = ({onChange}) => {
     return  <ItemBox>
         <BeginerBox>
         <ImageV1 src="/beginerhat.svg"></ImageV1>
-        <UnderText1 for="beginer">Beginner</UnderText1>
-        <ImgButton1 value="beginer"  onChange={onChange} name="cooklvl" id="beginer"  type="radio"></ImgButton1>
+        <UnderText1 >Beginner</UnderText1>
+        <ImgButton1 value="beginer" onChange={onChange} name="cooklvl" id="beginer"  type="radio"></ImgButton1>
         </BeginerBox>
 
         <IntermediateBox>
         <ImageV2 src="/Intermediatehat.svg"></ImageV2>
-        <UnderText2 for="Intermediate">Intermediate</UnderText2>
+        <UnderText2>Intermediate</UnderText2>
         <ImgButton2 value="Intermediate" onChange={onChange} name="cooklvl" id="Intermediate"  type="radio"></ImgButton2>
         </IntermediateBox>
 
         <ProffessionalBox>
         <ImageV3 src="/ProffessionalHat.svg"></ImageV3>
-        <UnderText3 for="Proffessional">Proffessional</UnderText3>
+        <UnderText3 >Proffessional</UnderText3>
         <ImgButton3 value="Proffessional" onChange={onChange} name="cooklvl" id="Proffessional"  type="radio"></ImgButton3>
         </ProffessionalBox>
     </ItemBox>
