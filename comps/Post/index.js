@@ -4,8 +4,9 @@ import styled, {css} from 'styled-components';
 const PostContainer = styled.div`
     display: flex;
     align-items: stretch;
-    width: 400px;
-   
+    width: 100%;
+    box-shadow: 0px 0.33px 0px #CED5DC;
+    margin-top: 15px;
 `;
 
 const ImgCont = styled.div`
@@ -56,6 +57,19 @@ const BodyText = styled.div`
     margin-top: 5px;
 `;
 
+const PostImg = styled.img`
+    width: 95%;
+    border-radius: 24px;
+    height: 120px;
+    overflow: hidden;
+    object-fit: cover;
+    margin-top: 10px;
+`;
+
+const PostLink = styled.div`
+    color: #00A2FD;
+`;
+
 const LikeCont = styled.div`
     display: flex;
     align-items: stretch;
@@ -83,7 +97,7 @@ const Count = styled.span`
     margin-left: 5px;
 `;
 
-const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileSrc, ratingSrc}) => {
+const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileSrc, ratingSrc, postImgSrc, LinkUrl}) => {
     return  <PostContainer>
         <ImgCont>
             <UserImg src={profileSrc}/>
@@ -93,11 +107,14 @@ const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileS
             <NameCont>
                 <Name>{FullName}</Name>
                 <Username>@{UserName}</Username>
-                {/* <Rating>[&bull;][&bull;][&bull;]</Rating> */}
                 <Rating src={ratingSrc}/>
             </NameCont>
 
-            <BodyText>{PostText}</BodyText>
+            <BodyText>
+                {PostText}
+                <PostLink><a href={LinkUrl}>{LinkUrl}</a></PostLink>
+                <PostImg src={postImgSrc}/>
+            </BodyText>
 
             <LikeCont>
                 <Like>
@@ -118,7 +135,9 @@ FullName:"John Appleseed",
 UserName:"john123",
 profileSrc:"profile.png",
 ratingSrc:"hat3.svg",
-PostText:"NEW! Creamy Tomato Soup with Mascarpone Recipe is up and ready for dinner tonight! http://ow.ly/54ul50Dy9Br",
+PostText:"This post is really cool!",
+LinkUrl:"www.websiteurl.com",
+postImgSrc:"CSLogo.svg",
 TastyCount:"123",
 NotTastyCount:"45"
 }
