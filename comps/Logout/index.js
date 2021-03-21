@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { useRouter } from 'next/router';
 
 const Cont = styled.footer`
   display: flex;
@@ -32,9 +33,18 @@ const Img = styled.img`
 `;
 
 const Logout = ({}) => {
+  const router = useRouter()
+
+  const logoutHandler = async () => {
+    sessionStorage.clear();
+  router.push({
+    pathname: '../LoginPage',
+  })
+}
+
   return (
     <Cont>
-      <InnerCont>
+      <InnerCont onClick={logoutHandler}>
         <H3>Logout</H3>
         <Img src="logout.svg" />
       </InnerCont>
