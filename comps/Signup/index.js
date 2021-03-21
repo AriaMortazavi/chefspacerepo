@@ -65,7 +65,7 @@ const Signup = ({}) => {
         console.log(passwordInfo);
         console.log(emailInfo);
         console.log(levelInfo);
-      const res = await axios.post("https://chefspace-backend.herokuapp.com/api/users", {
+      const res = await axios.post("http://localhost:8080/api/users", {
       email: emailInfo, password: passwordInfo, username: usernameInfo, level: levelInfo
     });
     console.log(res);
