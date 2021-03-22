@@ -58,8 +58,6 @@ const Signup = ({}) => {
     const [passwordInfo, setPasswordInfo] = useState(null);
     const [levelInfo, setLevelInfo] = useState(null);
 
-    const history = useHistory();
-
     const SignUpHandler = async () => {
         console.log(usernameInfo);
         console.log(passwordInfo);
