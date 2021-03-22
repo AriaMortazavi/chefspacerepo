@@ -31,6 +31,15 @@ const Login_new = styled.p`
     text-align: left;
 `;
 
+const Login_new_under = styled.a`
+    color: #EF7E5B;
+    font-size: 16px;
+    margin: 30px;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+`;
+
 const LevelBtns = styled.div`
     display: flex;
     align-items: center;
@@ -92,6 +101,7 @@ const Signup = ({}) => {
    <LevelBtns> <BeginerButton onChange={(e) => setLevelInfo(e.target.value)} /></LevelBtns>
    
     <FormButtons onClick={SignUpHandler} type="button" text={"Sign Up"}></FormButtons>
+    <Login_new_under href="/LoginPage">Login</Login_new_under>
  </SignUpBox>
  
 }
