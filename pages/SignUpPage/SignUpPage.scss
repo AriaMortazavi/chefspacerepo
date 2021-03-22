@@ -1,7 +1,8 @@
 .signup_contents{
     position: relative;
-    bottom: 76px;
+    bottom: 86px;
     padding: 20px;
+    z-index: 1;
 }
 
 .signup_header{
@@ -10,8 +11,9 @@
 
 .signup_footer{
     position: relative;
-    bottom: 74px;
+    bottom: 153px;
     width: 390px;
+    z-index: 0;
 }
 
 .signup{
