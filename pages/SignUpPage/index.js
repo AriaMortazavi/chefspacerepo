@@ -4,7 +4,7 @@ import Signup from "../../comps/Signup";
 const SignUpPage = () => {
   return (
     <div className="SignUpPage">
-        <img src="/headerimg.svg"/>
+        <img className="signup_header" src="/headerimg.svg"/>
       <div className="signup_contents">
         <Signup />
       </div>

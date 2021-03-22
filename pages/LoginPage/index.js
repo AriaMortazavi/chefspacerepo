@@ -7,11 +7,11 @@ let fakedb = [];
 const LoginPage = () => {
   return (
     <div className="LoginPage">
-        <img src="/headerimg.svg"/>
+        <img className="Loginheader" src="/headerimg.svg"/>
       <div className="contents">
         <Login />
       </div>
-      <img className="footer" src="/footerimg.svg"/>
+      <img className="Loginfooter" src="/footerimg.svg"/>
     </div>
   );
 };
