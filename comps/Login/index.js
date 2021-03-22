@@ -57,19 +57,19 @@ const Login = ({}) => {
     const history = useHistory();
 
     const LogInHandler = async () => {
-      const res = await axios.post("http://localhost:8080/users/login", {
+      const res = await axios.post("https://chefspace-backend.herokuapp.com/users/login", {
       email: emailInfo, password: passwordInfo
     });
     console.log(res);
-    if (res.email !== "Cannot find user"){
+    if (res.data == "Wrong Log in" || res.data == "Bad password"){
+      alert("Login information is incorrect")
+    }else{
       const token = res.data.accesssToken;
       sessionStorage.setItem("token", token);
       axios.defaults.headers.common['Authorization'] = token;
-      {router.push({
+      {router.push({ 
         pathname: '../Home',
       })}
-    }else{
-      alert("Can't Log In")
     }
   }
 
