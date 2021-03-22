@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import LooginPage from "./LoginPage"
-import Template from "../comps/Template";
+import LoginPage from "./LoginPage"
 import Post from '../comps/Post';
 
 import axios from 'axios';
@@ -13,9 +12,8 @@ const MainPage = () => {
 
   return (
     <div className="main">
-      <LooginPage />
+      <LoginPage />
       
-      <Template></Template>
 
       {/* <Post> </Post> */}
     
