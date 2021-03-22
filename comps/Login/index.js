@@ -47,7 +47,9 @@ const Container = styled.div`
 `;
 
 const Login = ({}) => {
+  
   const router = useRouter()
+  
 
     const [emailInfo, setEmailInfo] = useState(null);
     const [passwordInfo, setPasswordInfo] = useState(null);
@@ -55,7 +57,7 @@ const Login = ({}) => {
     const history = useHistory();
 
     const LogInHandler = async () => {
-      const res = await axios.post("http://localhost:8080/api/users/login", {
+      const res = await axios.post("http://localhost:8080/users/login", {
       email: emailInfo, password: passwordInfo
     });
     console.log(res);

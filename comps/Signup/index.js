@@ -6,8 +6,6 @@ import BeginerButton from '../BeginerButton';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import { useHistory } from 'react-router-dom';
-
 const SignUpBox = styled.form`
     max-width: 100%;
     max-height: 100%;
@@ -63,7 +61,7 @@ const Signup = ({}) => {
         console.log(passwordInfo);
         console.log(emailInfo);
         console.log(levelInfo);
-      const res = await axios.post("http://localhost:8080/api/users", {
+      const res = await axios.post("http://localhost:8080/users", {
       email: emailInfo, password: passwordInfo, username: usernameInfo, level: levelInfo
     });
     console.log(res);
