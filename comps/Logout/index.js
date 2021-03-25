@@ -2,34 +2,36 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { useRouter } from 'next/router';
 
-const Cont = styled.footer`
-  display: flex;
-  height: fit-content;
-  justify-content: flex-end;
-  box-shadow: 0px -1px 3px #e0e5e9;
-  background-color: white;
-  align-items: center;
-  height: 70px;
-  width: 100%;
-`;
+const Contents = styled.div`
+ display: flex;
+  justify-content: center;
+  text-align: center;
+  `
 
-const InnerCont = styled.footer`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  cursor: pointer;
+const InnerCont = styled.button`
+  border: 1px solid #EF7E5B;
+  width: 150px;
+  height: 50px;
+  transition: 0.2s;
+  border-color: ${(props) => (props.color ? props.color : "none")};
+  border-radius: 10px;
+  background: transparent;
+  :hover {
+    transition: 0.2s;
+    border-color: ${(props) => (props.color ? props.color : "black")};
+  }
 `;
 
 const H3 = styled.h3`
-  margin-right: 10px;
   color: #ef7e5b;
   display: flex;
-  align-items: center;
-  margin-top: 0px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  bottom: 6px;
 `;
 const Img = styled.img`
-  height: 20px;
-  margin-right: 10px;
 `;
 
 const Logout = ({}) => {
@@ -43,12 +45,11 @@ const Logout = ({}) => {
 }
 
   return (
-    <Cont>
+    <Contents>
       <InnerCont onClick={logoutHandler}>
-        <H3>Logout</H3>
-        <Img src="logout.svg" />
+        <H3>Logout&nbsp;<Img src="logout.svg" /></H3>
       </InnerCont>
-    </Cont>
+      </Contents>
   );
 };
 Logout.defaultProps = {};
