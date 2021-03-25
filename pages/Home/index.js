@@ -10,10 +10,28 @@ import NavHome from "../../comps/NavHome";
 import axios from "axios";
 import Post from '../../comps/Post';
 import MessageBox from '../../comps/MessageBox';
+import { useRouter } from 'next/router';
 
-let fakedb = [];
 
 const Home = () => {
+  const router = useRouter()
+
+  const headerAuth = async () => {
+    const token =  sessionStorage.getItem("token", token)
+    const res = await axios.get("https://chefspace-backend.herokuapp.com/users",
+    );
+    if (token != null){
+      console.log("all good")
+    }else{
+      router.push({
+        pathname: '../LoginPage',
+    }
+    )}
+    }
+    
+    useEffect(() => {
+      headerAuth();
+    }, [])
   return (
     <div className="Account">
       <NavHome />

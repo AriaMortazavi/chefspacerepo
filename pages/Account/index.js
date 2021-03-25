@@ -8,10 +8,12 @@ import FormButtons from "../../comps/FormButtons";
 import Input from "../../comps/Input";
 import NavHome from "../../comps/NavHome";
 import axios from "axios";
+import { useRouter } from 'next/router';
 
 
 const Account = () => {
 
+const router = useRouter()
 
 const [newUserInfo, setNewUserInfo] = useState(null);
 const [newEmailInfo, setNewEmailInfo] = useState(null);
@@ -28,6 +30,23 @@ username: newUserInfo, email: newEmailInfo, level: newLevelInfo
 );
 alert("Info has been updated")
 }
+
+const headerAuth = async () => {
+const token =  sessionStorage.getItem("token", token)
+const res = await axios.get("https://chefspace-backend.herokuapp.com/users",
+);
+if (token != null){
+  console.log("all good")
+}else{
+  router.push({
+    pathname: '../LoginPage',
+}
+)}
+}
+
+useEffect(() => {
+  headerAuth();
+}, [])
 
   return (
     <div className="Account">
