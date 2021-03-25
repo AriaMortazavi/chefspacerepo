@@ -42,7 +42,6 @@ const ImgUpload = styled.img`
   border: 1px solid #EF7F5B;
 `;
 const H4 = styled.h4`
-  color: #434343;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -50,11 +49,9 @@ const H4 = styled.h4`
   margin: 0px;
 `;
 const LabelUpload = styled.label`
-  color: #434343;
 `;
 
 const ColorfulTitle = styled.h4`
-  color: #EF7F5B;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -80,8 +77,8 @@ const AccountImg = ({ profileSrc, userName, userEmail, userlevel }) => {
           <input id="file-input" type="file" />
         </UploadCont>
       </ImgCont>
-      <H4><ColorfulTitle> Username: &nbsp;</ColorfulTitle>{userName}</H4> 
-      <H4><ColorfulTitle>Email: &nbsp;</ColorfulTitle>{userEmail}</H4>
+      <H4><ColorfulTitle> Username:&nbsp;</ColorfulTitle>{userName}</H4> 
+      <H4><ColorfulTitle>Email:&nbsp;</ColorfulTitle>{userEmail}</H4>
       <H4><ColorfulTitle>Level:&nbsp;</ColorfulTitle> {userlevel}</H4>
       <LeaveButton>
       <Logout/>
