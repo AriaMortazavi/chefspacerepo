@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled, {css} from 'styled-components';
 
 const PostContainer = styled.div`
@@ -64,6 +64,7 @@ const PostImg = styled.img`
     overflow: hidden;
     object-fit: cover;
     margin-top: 10px;
+    border: none;
 `;
 
 const PostLink = styled.div`
@@ -97,6 +98,14 @@ const Count = styled.span`
     margin-left: 5px;
 `;
 
+function handleTastyClicked(){
+    console.log("Tasty Clicked!");
+}
+
+function handleNotTastyClicked(){
+    console.log("Not Tasty Clicked!");
+}
+
 const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileSrc, ratingSrc, postImgSrc, LinkUrl}) => {
     return  <PostContainer>
         <ImgCont>
@@ -118,11 +127,11 @@ const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileS
 
             <LikeCont>
                 <Like>
-                    <IconCont><Icon src="/Tasty.svg"/>&nbsp;<Count>{TastyCount}</Count></IconCont>
+                    <IconCont onClick={handleTastyClicked}><Icon src="/Tasty.svg"/>&nbsp;<Count>{TastyCount}</Count></IconCont>
                     Tasty
                 </Like>
                 <Like>
-                    <IconCont><Icon src="/NotTasty.svg"/>&nbsp;<Count>{NotTastyCount}</Count></IconCont>
+                    <IconCont onClick={handleNotTastyClicked}><Icon src="/NotTasty.svg"/>&nbsp;<Count>{NotTastyCount}</Count></IconCont>
                     Not Tasty
                 </Like>
             </LikeCont>
@@ -136,8 +145,8 @@ UserName:"john123",
 profileSrc:"profile.png",
 ratingSrc:"hat3.svg",
 PostText:"This post is really cool!",
-LinkUrl:"www.websiteurl.com",
-postImgSrc:"CSLogo.svg",
+LinkUrl:"",
+postImgSrc:"",
 TastyCount:"123",
 NotTastyCount:"45"
 }
