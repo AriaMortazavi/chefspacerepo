@@ -8,25 +8,57 @@ import FormButtons from "../../comps/FormButtons";
 import Input from "../../comps/Input";
 import NavHome from "../../comps/NavHome";
 import axios from "axios";
+import { useRouter } from 'next/router';
+import jwt_decode from "jwt-decode";
 
-let fakedb = [];
 
 const Account = () => {
+
+  const [userName, setUserName] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
+  const [userLevel, setUserLevel] = useState(null);
+
+const router = useRouter()
+
+const tokenDecoder = async () => {
+var token = sessionStorage.getItem("token", token)
+var decodedUserInfo = jwt_decode(token)
+
+var decodedusername = decodedUserInfo.username
+setUserName(decodedusername);
+
+var decodedEmail = decodedUserInfo.email
+setUserEmail(decodedEmail);
+
+var decodeduserLevel = decodedUserInfo.level
+setUserLevel(decodeduserLevel);
+}
+
+
+const headerAuth = async () => {
+const token =  sessionStorage.getItem("token", token)
+const res = await axios.get("https://chefspace-backend.herokuapp.com/users"
+);
+if (token != null){
+  console.log("all good")
+}else{
+  router.push({
+    pathname: '../LoginPage',
+}
+)}
+}
+
+useEffect(() => {
+  headerAuth();
+  tokenDecoder();
+}, [])
+
   return (
     <div className="Account">
       <NavAccount />
       <div className="contents">
       <br></br>
-        <AccountImg />
-        <Input text="Username" placeholder="" />
-        <Input text="Email" placeholder="" />
-        <br></br>
-        <Hats text="Change Skill Level" />
-        <br></br><br></br><br></br>
-        <FormButtons text="Save Changes" /> 
-      </div>
-      <div className="logout">
-        <Logout />
+        <AccountImg userName ={userName} userEmail ={userEmail} userlevel ={userLevel}/>
       </div>
     </div>
   );
