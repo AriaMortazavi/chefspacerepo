@@ -31,10 +31,24 @@ const Home = () => {
     formData.append("image", file);
     formData.append("description", description);
 
-    const result = await axios.post('https://chefspace-backend.herokuapp.com/images', formData, { headers: {'Content-Type':'multipart/form-data'}})
+    const result = await axios.post('https://chefspace-backend.herokuapp.com/images', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
     setImage(result.data.imagePath)
   }
-  
+
+  const [userName, setUsername] = useState(null);
+  const [userLevel, setUserLevel] = useState(null);
+
+  const tokenDecoder = async () => {
+    var token = sessionStorage.getItem("token", token)
+    var decodedUserInfo = jwt_decode(token)
+
+    var decodedusername = decodedUserInfo.username
+    setUserName(decodedusername);
+
+    var decodeduserLevel = decodedUserInfo.level
+    setUserLevel(decodeduserLevel);
+  }
+
   // const [postDescription, setDescription] = useState(null);
   // const [postImage, setImage] = useState(null);
   // const [postLikes, setLikes] = useState(null);
@@ -50,42 +64,58 @@ const Home = () => {
 
   //   console.log(res);
   // }
-  
+
 
   const router = useRouter()
 
   const headerAuth = async () => {
-    const token =  sessionStorage.getItem("token", token)
+    const token = sessionStorage.getItem("token", token)
     const res = await axios.get("https://chefspace-backend.herokuapp.com/users",
     );
-    if (token != null){
+    if (token != null) {
       console.log("all good")
-    }else{
+    } else {
       router.push({
         pathname: '../LoginPage',
+      }
+      )
     }
-    )}
-    }
-    
-    useEffect(() => {
-      headerAuth();
-    }, [])
+  }
+
+  useEffect(() => {
+    headerAuth();
+  }, [])
+
+  const [likeCount, setLikeCount] = useState(0);
+  const [dislikeCount, setDislikeCount] = useState(0);
+
+  const handleTastyClicked = () => {
+    setLikeCount(prevCount => prevCount + 1);
+    console.log("Tasty");
+  };
+
+  const handleNotTastyClicked = () => {
+    setDislikeCount(prevCount => prevCount + 1);
+    console.log("Not Tasty");
+  };
 
   return (
     <div className="Account">
       <NavHome />
       <div className="contents">
 
-      <Post
+        <Post
           FullName="Gordon Ramsay"
-          UserName="g.ramsay"
+          UserName={userName}
           profileSrc="https://b.thumbs.redditmedia.com/NAzeLE5Ca6fjDQhBFgL5Rtffo7datdqzUkY__3XnD2c.png"
-          ratingSrc="hat3.svg"
+          ratingSrc={userLevel}
           PostText={setDescription}
           // LinkUrl="http://ow.ly/54ul50Dy9Br"
           postImgSrc={setImage}
-          TastyCount="0"
-          NotTastyCount="0"
+          TastyCount={likeCount}
+          tastyClicked={handleTastyClicked}
+          NotTastyCount={dislikeCount}
+          notTastyClicked={handleNotTastyClicked}
         />
 
         {/* <Post
@@ -111,11 +141,11 @@ const Home = () => {
           TastyCount="123"
           NotTastyCount="45"
         /> */}
-        
+
       </div>
 
-      <MessageBox submit={submitPost} onChangeUpload={e => setFile(e.target.files[0])} onChangeDescription={e => setDescription(e.target.value)}/>
-      
+      <MessageBox submit={submitPost} onChangeUpload={e => setFile(e.target.files[0])} onChangeDescription={e => setDescription(e.target.value)} />
+
     </div>
   );
 };

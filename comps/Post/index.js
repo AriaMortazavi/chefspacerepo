@@ -106,7 +106,7 @@ function handleNotTastyClicked(){
     console.log("Not Tasty Clicked!");
 }
 
-const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileSrc, ratingSrc, postImgSrc, LinkUrl}) => {
+const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileSrc, ratingSrc, postImgSrc, LinkUrl, tastyClicked, notTastyClicked}) => {
     return  <PostContainer>
         <ImgCont>
             <UserImg src={profileSrc}/>
@@ -127,11 +127,11 @@ const Post = ({FullName, UserName, PostText, TastyCount, NotTastyCount, profileS
 
             <LikeCont>
                 <Like>
-                    <IconCont onClick={handleTastyClicked}><Icon src="/Tasty.svg"/>&nbsp;<Count>{TastyCount}</Count></IconCont>
+                    <IconCont onClick={tastyClicked}><Icon src="/Tasty.svg"/>&nbsp;<Count>{TastyCount}</Count></IconCont>
                     Tasty
                 </Like>
                 <Like>
-                    <IconCont onClick={handleNotTastyClicked}><Icon src="/NotTasty.svg"/>&nbsp;<Count>{NotTastyCount}</Count></IconCont>
+                    <IconCont onClick={notTastyClicked}><Icon src="/NotTasty.svg"/>&nbsp;<Count>{NotTastyCount}</Count></IconCont>
                     Not Tasty
                 </Like>
             </LikeCont>
@@ -147,8 +147,10 @@ ratingSrc:"hat3.svg",
 PostText:"This post is really cool!",
 LinkUrl:"",
 postImgSrc:"",
-TastyCount:"123",
-NotTastyCount:"45"
+TastyCount:"",
+NotTastyCount:"",
+tastyClicked:"",
+notTastyClicked:""
 }
 
 export default Post;
